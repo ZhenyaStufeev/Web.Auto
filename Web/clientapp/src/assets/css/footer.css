@@ -1,0 +1,72 @@
+footer {
+    background-color: #334150;
+    color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-wrapper {
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+footer .phones {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+footer .phones .phone {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    color: #8497b4;
+    font-size: 16px;
+}
+
+footer .logo img {
+    max-width: 120px;
+}
+
+footer .logo {
+    display: flex;
+    align-items: center;
+}
+
+footer .destr {
+    /* margin-top: 20px; */
+    color: #8497b4;
+    font-size: 14px;
+}
+
+footer .destr img {
+    vertical-align: middle;
+    width: 25px;
+    margin-left: 5px;
+    padding: 0px 8px;
+}
+
+footer .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 320px;
+}
+
+footer .right,
+footer .left {
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    footer .right {
+        margin-top: 15px;
+    }
+
+    footer .left {
+        width: 100%;
+    }
+}

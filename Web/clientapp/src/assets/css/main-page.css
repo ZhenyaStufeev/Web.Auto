@@ -1,0 +1,96 @@
+/*++MAIN CARUSEL++*/
+.main-carusel {
+    padding: 30px;
+}
+
+.carousel-root>.carousel-slider {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 500px;
+}
+
+.carousel-root>.carousel-slider>.slider-wrapper>.slider>.slide {
+    height: auto;
+}
+
+.carousel-root>.carousel-slider>.control-dots {
+    position: absolute;
+    background: white;
+    /* width: auto; */
+    justify-content: space-evenly;
+    display: inline-flex;
+    height: -moz-fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    /* padding: 15px 5px 15px 5px; */
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    margin: 0;
+
+    width: 200px;
+    padding: 7px 5px 7px 5px;
+    margin-bottom: 5px;
+}
+
+.carousel-root>.carousel-slider>.control-dots>.dot {
+    width: 15px;
+    height: 15px;
+    background: silver;
+    box-shadow: none;
+}
+
+.carousel-root>.carousel-slider>.control-dots>.dot:is(.selected) {
+    background: #354150;
+}
+
+.carousel-root>.carousel-slider>.control-dots>.dot:is(.selected) {
+    background: #354150;
+}
+
+.main-carusel .img-block img {
+    max-height: 100%;
+    object-fit: cover;
+    height: 100%;
+    /* border-radius: 10px; */
+}
+
+.main-carusel .img-block {
+    max-height: 450px;
+    width: 100%;
+    height: 100%;
+}
+
+.main-carusel .carousel .slider-wrapper
+{
+    border-radius: 15px;
+}
+
+@media only screen and (max-width: 480px) {
+    .main-carusel {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }    
+}
+
+/*--MAIN CARUSEL--*/
+
+/*++MAIN PAGE++*/
+
+.main-page
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-page .catalog-btn
+{
+    max-width: 250px;
+    align-self: center;
+    width: 100%;
+    border-radius: 15px;
+}
+
+/*--MAIN PAGE--*/

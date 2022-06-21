@@ -1,0 +1,72 @@
+@keyframes fading {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.pagination>li {
+    border-radius: 5px;
+    border: 0.5px solid #334150;
+    width: 30px;
+    height: 30px;
+    margin: 0px 2px 0px 2px;
+    text-align: center;
+    font-weight: bold;
+    /* font-size: 13px; */
+    transition: .4s;
+    animation: fading 0.4s both;
+    background-color: white;
+    cursor: pointer;
+}
+
+.pagination>li:hover:is(.active) {
+    background-color: #384d77;
+    color: white;
+}
+
+.pagination>li:hover:not(.active) {
+    background-color: #e4f1f9;
+}
+
+.pagination>li>a {
+    height: 100%;
+    display: block;
+    padding: 5px;
+    margin-top: 1px;
+}
+
+.pagination>.next>a>div,
+.pagination>.previous>a>div {
+    transform: translate(-5%, -3%);
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.pagination>.previous {
+    margin-right: 10px;
+}
+
+.pagination>.next {
+    margin-left: 10px;
+}
+
+.pagination>.active {
+    color: white;
+    background-color: #334150;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    list-style-type: none;
+    -webkit-animation: animate-fade-up 1s;
+    animation: animate-fade-up 1s;
+    padding: 0;
+}

@@ -1,0 +1,229 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar .head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #334150;
+}
+
+.navbar .head>a>.logo {
+    height: 80px;
+    min-width: 160px;
+}
+
+
+.nav-column {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+
+    flex: 1 1 auto;
+    max-width: 100%;
+}
+
+.phone-number-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.phone-number-section>.phone-number {
+    color: #334150;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+    transition: .2s linear;
+}
+
+
+.phone-number-section>.phone-number:hover {
+    color: #384d77;
+}
+
+.phone-number-section>.span-phone {
+    color: #0a58ca;
+    font-size: 13px;
+    position: absolute;
+    top: 27px;
+    right: 0px;
+    font-family: 'Pe-icon-7-stroke';
+}
+
+.phone-number-section>.call-icon {
+    font-size: 20px;
+}
+
+.phone-number-section>.call-ico {
+    max-height: 25px;
+    max-width: 25px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.nav-column>.basket {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.nav-column>.basket:hover {
+    color: #384d77;
+}
+
+.nav-column>.basket>.icon-block {
+    position: relative;
+    margin-left: 10px;
+}
+
+.nav-column>.basket>.icon-block>.basket-items {
+    line-height: 1.3;
+    top: 0px;
+    right: -3px;
+    padding: 1px 4px;
+    border-radius: 15px;
+    background: #ff5000;
+    color: #fff;
+    font-size: 10px;
+    position: absolute;
+}
+
+.nav-column>.basket>.icon-block>.icon {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.nav-column>.basket>.basket-text {
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.navbar .bottom {
+    height: 40px;
+    background: #334150;
+    color: white;
+}
+
+.bottom .bottom-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+.bottom .bottom-headder-right {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.bottom .bottom-headder-right .userbar {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: transparent;
+    transition: all .2s;
+}
+
+.bottom .bottom-headder-right .userbar:hover,
+.bottom .bottom-headder-right .userbar:focus {
+    background-color: #384d77;
+}
+
+.bottom .bottom-headder-right .userbar .text {
+    padding-left: 5px;
+}
+
+.bottom .bottom-headder-right .userbar .userbar-icon {
+    font-size: 21px;
+}
+
+.bottom .bottom-headder-right .lang-bar {
+    display: flex;
+    align-items: center;
+    padding-left: 7px;
+    padding-right: 7px;
+    z-index: 4;
+}
+
+.bottom-header-catalog {
+    height: 100%;
+}
+
+.catalog-button {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    transition: all .2s;
+    cursor: pointer;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.catalog-button .menu-icon {
+    margin-right: 5px;
+    font-size: 23px;
+}
+
+.catalog-button:hover,
+.catalog-button:focus {
+    background-color: #384d77;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .nav-column {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar .head>a .logo {
+        height: 50px;
+        min-width: auto;
+    }
+
+    .navbar {
+        flex-direction: column-reverse;
+        z-index: 3;
+        position: sticky;
+        top: 0;
+    }
+
+    .search-block-wrapper {
+        padding: 10px;
+        background-color: #334150;
+        border-radius: 0px 0px 20px 20px;
+    }
+
+    .navbar .header-wrapper {
+        padding: 0;
+
+    }
+
+    .bottom .bottom-header-container {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .navbar .head .logo-link {
+        display: none;
+    }
+}
+
+/* @media only screen and (max-width: 480px) {
+
+
+} */

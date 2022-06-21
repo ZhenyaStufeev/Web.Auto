@@ -1,0 +1,21 @@
+.css-b62m3t-container
+{
+    width: 100%;
+}
+
+.option-select .css-1pahdxg-control:hover
+{
+    border-color: #464c53;
+    box-shadow: 0 0 0 0.2rem rgb(56 77 119 / 25%);
+}
+
+.option-select .css-1pahdxg-control
+{
+    border-color: #464c53;
+    box-shadow: 0 0 0 1px #464c53;
+}
+
+.option-select .css-9gakcf-option
+{
+    background-color: #464c53;
+}

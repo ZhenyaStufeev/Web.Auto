@@ -1,0 +1,37 @@
+﻿            ApplicationContext real_db = new ApplicationContext("RealConnection");
+
+
+            Update.DisableIdentityInsert<FilterValue>(local_db);
+            local_db.FilterValues.AddRange(real_db.FilterValues.ToList());
+            Update.EnableIdentityInsert<FilterValue>(local_db);
+            Update.SaveChangesWithIdentityInsert<FilterValue>(local_db);
+
+            Update.DisableIdentityInsert<FilterName>(local_db);
+            local_db.FilterNames.AddRange(real_db.FilterNames.ToList());
+            Update.EnableIdentityInsert<FilterName>(local_db);
+            Update.SaveChangesWithIdentityInsert<FilterName>(local_db);
+
+            Update.DisableIdentityInsert<ImageInfo>(local_db);
+            local_db.ImageInfos.AddRange(real_db.ImageInfos.ToList());
+            Update.EnableIdentityInsert<ImageInfo>(local_db);
+            Update.SaveChangesWithIdentityInsert<ImageInfo>(local_db);
+
+            Update.DisableIdentityInsert<Product>(local_db);
+            local_db.Products.AddRange(real_db.Products.ToList());
+            Update.EnableIdentityInsert<Product>(local_db);
+            Update.SaveChangesWithIdentityInsert<Product>(local_db);
+
+            Update.DisableIdentityInsert<ProductImage>(local_db);
+            local_db.ProductImages.AddRange(real_db.ProductImages.ToList());
+            Update.EnableIdentityInsert<ProductImage>(local_db);
+            Update.SaveChangesWithIdentityInsert<ProductImage>(local_db);
+
+            Update.DisableIdentityInsert<Filter>(local_db);
+            local_db.Filters.AddRange(real_db.Filters.ToList());
+            Update.EnableIdentityInsert<Filter>(local_db);
+            Update.SaveChangesWithIdentityInsert<Filter>(local_db);
+
+            Update.DisableIdentityInsert<FilterNameGroup>(local_db);
+            local_db.FilterNameGroups.AddRange(real_db.FilterNameGroups.ToList());
+            Update.EnableIdentityInsert<FilterNameGroup>(local_db);
+            Update.SaveChangesWithIdentityInsert<FilterNameGroup>(local_db);

@@ -1,0 +1,75 @@
+.selected-filters {
+    max-width: 70%;
+}
+
+
+
+.selected-filters>.filters-list {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.selected-filters>.filters-list>li {
+    border-radius: 8px;
+    background-color: #fafafa;
+    font-size: 12px;
+    font-weight: 700;
+    color: #53575d;
+    margin-right: 12px;
+    white-space: nowrap;
+    height: 16px;
+    float: left;
+    line-height: 34px;
+    padding: 8px 26px 8px 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+
+    transition: .2s;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.selected-filters>.filters-list>li:hover {
+    opacity: 0.8;
+}
+
+.filters-list .text-block {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filters-list .delete-icon {
+    width: 13px;
+    display: block;
+    position: absolute;
+    right: 13px;
+    font-size: 25px;
+    top: 4px;
+    text-shadow: 0 0 0px #333, 0 0 0px #333;
+    transition: .2s;
+}
+
+.selected-filters>.filters-list>li:hover .delete-icon {
+    text-shadow: 0 0 0.65px #333, 0 0 0.65px #333;
+}
+
+.selected-filters>.filters-list>li:is(.clear-filters) {
+    padding: 8px;
+    background-color: hsla(211, 22.1%, 25.7%, 0.09) !important;
+}
+
+@media only screen and (max-width: 1200px) {
+    .selected-filters {
+        max-width: 100%;
+        width: 100%;
+    }
+}

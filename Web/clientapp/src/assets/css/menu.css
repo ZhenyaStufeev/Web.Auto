@@ -1,0 +1,176 @@
+.menu
+{
+    position: fixed;
+    top: 0px;
+    left: -330px;
+    height: 100%;
+    background: white;
+    border: 0.5px solid silver;
+    width: 279px;
+    z-index: 5;
+    padding: 24px 20px 24px 20px;
+}
+
+.menu:is(.__active)
+{
+    left: 0px;
+}
+
+.menu-wrapper
+{
+    position: relative;
+}
+
+.menu .side-bar-close
+{
+    font-size: 50px;
+    /* position: -webkit-sticky;
+    position: sticky; */
+    position: absolute;
+    top: 0;
+    top: 0px;
+    right: 0px;
+    z-index: 5;
+}
+
+.menu-wrapper
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-wrapper .title
+{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 12px;
+}
+
+.menu-wrapper .head
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+}
+
+.menu-wrapper .head .hb .text
+{
+    font-size: 11px;
+    color: #28282c;
+}
+.menu-wrapper .head .hb
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-wrapper .head .hb .icon-menu
+{
+    position: relative;
+    width: 30px;
+}
+
+.menu-wrapper .head .hb .icon-menu .icon
+{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.menu-wrapper .head .hb .icon-menu .basket-items
+{
+    line-height: 1.3;
+    top: 0px;
+    right: -3px;
+    padding: 1px 4px;
+    border-radius: 15px;
+    background: #ff5000;
+    color: #fff;
+    font-size: 10px;
+    position: absolute;
+}
+
+.title-submenu
+{
+    font-weight: 700;
+    font-size: 14px;
+    color: #80868e;
+}
+
+.contact
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.contact .number
+{
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 24px;
+    color: #1f1f22;
+    padding-left: 24px;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.contact .number:hover {
+    color: #384d77;
+}
+
+.contact .call-logo
+{
+    position: absolute;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.contact .call-logo > svg
+{
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.contact .work-time
+{
+    float: right;
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 20px;
+    color: #80868e;
+    text-decoration: none;
+}
+
+.addphones
+{
+    clear: both;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.addphones .number
+{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #53575d;
+    text-decoration: none;
+}
+
+.phonessep
+{
+    background-color: #E5E6E8;
+    width: 1px;
+    height: 11px;
+}

@@ -1,0 +1,53 @@
+.catalog
+{
+    margin-top: 10px;
+    font-family: 'Cera Round Pro','Trebuchet MS','Arial';
+}
+
+.catalog .catalog-list {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.catalog .catalog-list>li>a {
+    font-size: 14px;
+    line-height: 20px;
+    color: #28282c;
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+    text-decoration: none;
+    transition: all .2s;
+    text-shadow: 0 0 0px #354150, 0 0 0px #354150;
+}
+
+.catalog .catalog-list>li {
+    margin-bottom: 4px;
+    position: relative;
+    width: calc(100% - 24px);
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.catalog .catalog-list>li:hover > a {
+    text-shadow: 0 0 0.65px #354150, 0 0 0.65px #354150;
+}
+.catalog .catalog-list>li:hover {
+
+    border-radius: 25px;
+    background-color: #f7fafa;
+}
+
+.catalog .catalog-list>li .icon
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
