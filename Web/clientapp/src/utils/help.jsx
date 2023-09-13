@@ -1,4 +1,33 @@
+
 const { useRef, useEffect } = require("react");
+const jwt_decode = require('jwt-decode');
+const { default: axios } = require("axios");
+
+const setAuthorizationToken = (token) => {
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else {
+        delete axios.defaults.headers.common['Authorization'];
+    }
+}
+
+const setLocalStorageCredintials = (token) => {
+    if (token) {
+        localStorage.setItem("jwtToken", token);
+    }
+}
+
+const removeLocalStorageCredintials = () =>
+{
+    localStorage.removeItem("jwtToken");
+}
+
+const getUserCredintials = (token) => {
+    let user = jwt_decode.default(token);
+    let userName = user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+    let email = user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"];
+    return { email: email, userName: userName };
+}
 
 const breakUpPrice = (value) => {
     if (!isNaN(value)) {
@@ -34,5 +63,9 @@ const usePrevious = (value) => {
 module.exports = {
     breakUpPrice,
     useFocus,
-    usePrevious
+    usePrevious,
+    setAuthorizationToken,
+    setLocalStorageCredintials,
+    getUserCredintials,
+    removeLocalStorageCredintials
 };

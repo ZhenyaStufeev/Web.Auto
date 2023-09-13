@@ -2,7 +2,8 @@ import {
     AUTH_IS_CLOSE,
     AUTH_IS_OPEN,
     IS_LOGIN,
-    IS_REGISTER
+    IS_REGISTER,
+    UPDATE_USER_CREDENTIALS
 } from '../../utils/store/types';
 
 export function openAuthModal() {
@@ -37,6 +38,28 @@ export function setLoginType() {
         return dispatch({
             type: IS_LOGIN,
             typeAuth: IS_LOGIN
+        });
+    }
+}
+
+export function UpdateUserCredentials(isAutorized, email, userName) {
+    return function (dispatch) {
+        return dispatch({
+            type: UPDATE_USER_CREDENTIALS,
+            email: email,
+            userName: userName,
+            isAutorized: isAutorized
+        });
+    }
+}
+
+export function ResetCredentials() {
+    return function (dispatch) {
+        return dispatch({
+            type: UPDATE_USER_CREDENTIALS,
+            email: null,
+            userName: null,
+            isAutorized: false
         });
     }
 }

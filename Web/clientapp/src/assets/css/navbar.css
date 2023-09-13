@@ -143,6 +143,9 @@
 
 .bottom .bottom-headder-right .userbar .text {
     padding-left: 5px;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .bottom .bottom-headder-right .userbar .userbar-icon {

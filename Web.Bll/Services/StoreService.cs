@@ -87,8 +87,9 @@ namespace Web.Bll.Services
             responce.Result.Add(data_responce);
             return responce;
         }
-        public async Task<ProductInfo> GetProductInfoByItemId(int Id)
+        public async Task<ResponceResult> GetProductInfoByItemId(int Id)
         {
+            ResponceResult responceResult = new ResponceResult() { Succeeded = true };
             var productQuery = await db.Products.Include(p => p.ProductImages).ThenInclude(imagePath => imagePath.ImageInfoOf).FirstOrDefaultAsync(p => p.Id == Id);
 
             ProductInfo sProduct = new()
@@ -110,8 +111,8 @@ namespace Web.Bll.Services
                 Name = f.FilterNameOf.Name,
                 Value = f.FilterValueOf.Name
             }).ToListAsync();
-
-            return sProduct;
+            responceResult.Result.Add(sProduct);
+            return responceResult;
         }
         public async Task<ResponceResult> GetProductsByItemsId(ProductCartRequest data)
         {
@@ -179,15 +180,26 @@ namespace Web.Bll.Services
         public async Task<ResponceResult> GetFilterParams(int? categoryId)
         {
             ResponceResult responce = new ResponceResult();
+            List<FNameViewModel> ordered_list = new List<FNameViewModel>();
+            List<FNameViewModel> old = new();
             if (categoryId != null)
             {
                 int c_id = (int)categoryId;
-                responce.Result.AddRange(GetFiltersByCategoryId(c_id));
+                old.AddRange(GetFiltersByCategoryId(c_id));
             }
             else
             {
-                responce.Result.AddRange(GetFilters());
+                old.AddRange(GetFilters());
             }
+
+            foreach (var f in old)
+            {
+                var fName = f;
+                var ordered_fValues = f.Childrens.OrderBy(p => p.Name);
+                fName.Childrens = ordered_fValues.ToList();
+                ordered_list.Add(f);
+            }
+            responce.Result.AddRange(ordered_list);
             responce.Succeeded = true;
             return responce;
         }
@@ -257,6 +269,14 @@ namespace Web.Bll.Services
                 Price = p.Price,
             }).ToListAsync();
             responce.Result.AddRange(products);
+            return responce;
+        }
+        public async Task<ResponceResult> GetCategoryNameById(int categoryId)
+        {
+            ResponceResult responce = new ResponceResult() { Succeeded = true };
+            var db_category = await db.Categories.FirstOrDefaultAsync(p => p.Id == categoryId);
+            var res_category = db_category.Name;
+            responce.Result.Add(res_category);
             return responce;
         }
         private IQueryable<Product> SortProductsByPrice(IQueryable<Product> FilteredProducts, int sortType)

@@ -9,7 +9,6 @@ namespace DAL.Entities
 {
     public class ApplicationUser: IdentityUser
     {
-        public string DisplayName { get; set; }
-        public string DisplayRole { get; set; }
+        public string FullName { get; set; }
     }
 }

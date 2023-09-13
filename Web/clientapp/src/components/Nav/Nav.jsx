@@ -3,15 +3,33 @@ import { Link } from 'react-router-dom';
 import '../../assets/css/navbar.css';
 import { connect } from "react-redux";
 import logo from '../../assets/img/logo.png';
-import { openAuthModal } from '../../utils/StoreMethods/AuthControl';
+import { openAuthModal, ResetCredentials } from '../../utils/StoreMethods/AuthControl';
 import { ReactComponent as PhoneLogo } from '../../assets/img/svg/call.svg';
 import SearchProductHeader from "../SearchProductHeader";
 import LangSelect from '../LangSelect';
-
 import { openMenuSidebar } from '../../utils/StoreMethods/MenuControl';
 import { openCartSidebar } from "../../utils/StoreMethods/CartControl";
+import { removeLocalStorageCredintials } from "../../utils/help";
 
 const Nav = props => {
+    const renderUserBar = () => {
+        let notAutorizedUser = (
+            <div className="userbar" onClick={props.openAuthModal}>
+                <div className="userbar-icon pe-7s-user"></div>
+                <div className="text">Вхід</div>
+            </div>);
+        let autorizedUser = (
+            <div className="userbar" onClick={() => {
+                props.ResetCredentials();
+                removeLocalStorageCredintials();
+            }}>
+                <div className="userbar-icon pe-7s-user"></div>
+                <div className="text">{props.userName}</div>
+            </div>
+        );
+        return props.userIsAutorized === true ? autorizedUser : notAutorizedUser;
+    }
+
     return (
         <div className="navbar">
             <div className="header-wrapper">
@@ -50,12 +68,9 @@ const Nav = props => {
                         </div>
                         <div className="bottom-headder-right">
                             <div className="lang-bar">
-                                <LangSelect/>
+                                <LangSelect />
                             </div>
-                            <div className="userbar" onClick={props.openAuthModal}>
-                                <div className="userbar-icon pe-7s-user"></div>
-                                <div className="text">Вхід</div>
-                            </div>
+                            {renderUserBar()}
                         </div>
                     </div>
                 </div>
@@ -67,11 +82,14 @@ const Nav = props => {
 const mapStateProps = state => {
     return {
         cartProductCount: state.cart.countAddedProducts,
+        userIsAutorized: state.auth.isAutorized,
+        userName: state.auth.userName
     }
 };
 
 export default connect(mapStateProps, {
     openAuthModal,
     openMenuSidebar,
-    openCartSidebar
+    openCartSidebar,
+    ResetCredentials
 })(Nav)

@@ -47,7 +47,7 @@ const SearchProductHeader = props => {
         let list_result = products.map((item, key) => {
             return (
                 <li className="search-product" key={key}>
-                    <Link to={"/product?" + item.id} className="product-link">
+                    <Link to={"/view/" + item.id} className="product-link">
                         <img src={item.imagePath} className="search-product-img" alt={item.name} />
                         <div className="search-results__text">
                             <div className="search-results__title">

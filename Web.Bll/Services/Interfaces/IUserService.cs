@@ -8,5 +8,7 @@ namespace Web.Bll.Interfaces
 {
     public interface IUserService
     {
+        Task<ResponceResult> SignIn(LoginModel model);
+        Task<ResponceResult> SignUp(RegisterModel model);
     }
 }

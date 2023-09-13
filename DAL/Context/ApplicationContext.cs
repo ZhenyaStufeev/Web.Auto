@@ -109,7 +109,7 @@ namespace DAL.Context
         public DbSet<FilterNameGroup> FilterNameGroups { get; set; }
         public DbSet<VFilterNameGroup> VFilterNameGroups { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
-        public DbSet<ImageInfo> ImageInfos { get; set; }
+        public DbSet<ImageInfo> ImagesInfo { get; set; }
         public DbSet<Category> Categories { get; set; }
 
     }

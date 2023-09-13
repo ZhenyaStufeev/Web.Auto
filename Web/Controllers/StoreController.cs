@@ -83,6 +83,13 @@ namespace Web.Controllers
             return Ok(res);
         }
 
+        [HttpGet("getcategoryname/{categoryId}")]
+        public async Task<IActionResult> GetCategory(int categoryId)
+        {
+            var res = await store.GetCategoryNameById(categoryId);
+            return Ok(res);
+        }
+
         [HttpPost("getcartproducts")]
         public async Task<IActionResult> getProductsById([FromBody] ProductCartRequest data)
         {

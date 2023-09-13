@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Web.Bll.Entities
 {
-    public class UserInfo
+    public class UserCredintials
     {
-        public string DisplayName { get; set; }
-        public string Email { get; set; }
         public string Token { get; set; }
+        public DateTime ValidTime { get; set; }
     }
 }

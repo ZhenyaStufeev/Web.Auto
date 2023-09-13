@@ -43,28 +43,29 @@ namespace Web
             });
 
 
-            //var signingKey = AppSettings.SymmetricKey();
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            var signingKey = AppSettings.SymmetricKey();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 
-            //}).AddJwtBearer(cfg =>
-            //{
-            //    cfg.RequireHttpsMetadata = false;
-            //    cfg.SaveToken = true;
-            //    cfg.TokenValidationParameters = new TokenValidationParameters()
-            //    {
-            //        IssuerSigningKey = signingKey,
-            //        ValidateAudience = false, //ַנמבטעט
-            //        ValidateIssuer = false, //ַנמבטעט
-            //        ValidateLifetime = true,
-            //        ValidateIssuerSigningKey = true,
-            //        RequireExpirationTime = true,
-            //        //RequireSignedTokens = true,
-            //        ClockSkew = TimeSpan.Zero
-            //    };
-            //});
+            }).AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningKey = signingKey,
+                    ValidateAudience = false, //ַנמבטעט
+                    ValidateIssuer = false, //ַנמבטעט
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    RequireExpirationTime = true,
+                    //RequireSignedTokens = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {

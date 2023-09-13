@@ -25,12 +25,13 @@ namespace Test
         static async Task Main(string[] args)
         {
             ApplicationContext local_db = new ApplicationContext();
+
             //Update.DisableIdentityInsert<Product>(local_db);
 
-            List<int> temp = new List<int>() { 215, 216 };
+            //List<int> temp = new List<int>() { 215, 216 };
 
-            int Count_FilterGroup = 0; //Кількість співпадніть у групі фільтрів
-            var predicate = PredicateBuilder.False<Filter>();
+            //int Count_FilterGroup = 0; //Кількість співпадніть у групі фільтрів
+            //var predicate = PredicateBuilder.False<Filter>();
 
             //foreach (var term in temp)
             //    predicate = predicate.Or(x => x.FilterValueId == term);
@@ -47,6 +48,16 @@ namespace Test
 
             //Update.EnableIdentityInsert<Product>(local_db);
             //Update.SaveChangesWithIdentityInsert<Product>(local_db);
+            var product = local_db.Products.FirstOrDefault(p => p.Id == 38);
+
+            var images = local_db.ImagesInfo.Where(p => p.Id == 1 || p.Id == 2);
+
+            foreach (var a in images)
+            {
+                var pr_image = new ProductImage() { ProductOf = product, ImageInfoOf = a };
+                local_db.Add(pr_image);
+            }
+           // local_db.SaveChanges();
         }
 
         static void UpdateImages()

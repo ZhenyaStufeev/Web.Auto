@@ -11,10 +11,11 @@ namespace Web.Bll.Interfaces
     {
         Task<ResponceResult> GetCategories();
         Task<ResponceResult> GetFilterParams(int? categoryId);
-        Task<ProductInfo> GetProductInfoByItemId(int Id);
+        Task<ResponceResult> GetProductInfoByItemId(int Id);
         Task<ResponceResult> GetProducts(ProductRequest model);
         Task<ResponceResult> GetProductsByItemsId(ProductCartRequest data);
         Task<ResponceResult> SearchProducts(ProductSearchRequest data);
         Task<ResponceResult> GetRandomProducts();
+        Task<ResponceResult> GetCategoryNameById(int categoryId);
     }
 }

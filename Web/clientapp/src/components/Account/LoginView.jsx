@@ -1,5 +1,8 @@
 import React, { useState, useRef } from "react";
 import { REGEXP_PASSWORD, REGEXP_EMAIL } from "../../utils/regexp";
+import { signIn } from "../../utils/request";
+import { NotificationManager} from 'react-notifications';
+import { getUserCredintials, setAuthorizationToken, setLocalStorageCredintials } from "../../utils/help";
 
 const AuthView = props => {
     const lookIconRef = useRef(null);
@@ -24,18 +27,35 @@ const AuthView = props => {
     }
 
     const onClickLogin = () => {
-        //TO DO REQUEST
-        setErrors([]);
-        let errors = [];
-        if(!emailInput.match(REGEXP_EMAIL))
-        {
-            errors.push("E-пошта не відповідає стандартам");
+        let _errors = [];
+        if (!emailInput.match(REGEXP_EMAIL)) {
+            _errors.push("E-пошта не відповідає стандартам");
         }
-        if(!passwordInput.match(REGEXP_PASSWORD))
-        {
-            errors.push("Пароль повинен містити: тільки латиницю, не менше 1 літери алфавіту, хоча б 1 літеру верхнього регістру, не менше 1 цифрового символу, хоча б один спеціальний символ, більше 7 символів");
+        if (!passwordInput.match(REGEXP_PASSWORD)) {
+            _errors.push("Пароль повинен містити: тільки латиницю, не менше 1 літери алфавіту, хоча б 1 літеру верхнього регістру, не менше 1 цифрового символу, хоча б один спеціальний символ, більше 7 символів");
         }
-        setErrors(errors);
+        if (_errors.length > 0)
+            setErrors(_errors);
+        else {
+            signIn(emailInput, passwordInput)
+                .then(result => {
+                    if (result.data.succeeded === true) {
+                        let token = result.data.result[0].token;
+                        let user = getUserCredintials(token);
+                        if (user != null) {
+                            props.UpdateUserCredentials(true, user.email, user.userName);
+                        }
+                        setAuthorizationToken(token);
+                        setLocalStorageCredintials(token);
+                        NotificationManager.success('Ви успішно авторизувались!', 'Успішна операція');
+                        props.closeModal();
+                    }
+                })
+                .catch(err => {
+                    let server_errors = err.response.data.errors;
+                    setErrors(server_errors);
+                });
+        }
     }
 
     const emailInputOnChnaged = (e) => {
@@ -101,6 +121,5 @@ const AuthView = props => {
     );
 
 }
-
 
 export default AuthView;

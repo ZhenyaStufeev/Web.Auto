@@ -28,11 +28,36 @@ const getRandomProducts = () =>
     return axios.get(host + "/api/Store/getrandomproducts");
 }
 
+const getProduct = (ProductId) =>
+{
+    return axios.get(host + "/api/Store/getproduct/" + ProductId);
+}
+
+const getCategory = (categoryId) =>
+{
+    return axios.get(host + "/api/Store/getcategoryname/" + categoryId);
+}
+
+//auth
+const signUp = (email,password,userName) =>
+{
+    return axios.post(host + "/api/Account/signup", { Email: email, Password: password, UserName: userName });
+}
+
+const signIn = (email,password) =>
+{
+    return axios.post(host + "/api/Account/signin", { Email: email, Password: password});
+}
+
 module.exports = {
     searchProducts,
     getCategories,
     getProducts,
     getFilters,
     getCartProducts,
-    getRandomProducts
+    getRandomProducts,
+    signIn,
+    signUp,
+    getProduct,
+    getCategory
 };

@@ -11,17 +11,12 @@ namespace Web.Bll.Entities
         {
             Email = "";
             Password = "";
-            ConfirmPassword = "";
-            Captcha = "";
             UserName = "";
         }
         public string Email { get; set; }
 
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        public string ConfirmPassword { get; set; }
-        public string Captcha { get; set; }
         public string UserName { get; set; }
     }
 }

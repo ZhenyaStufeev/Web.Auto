@@ -2,12 +2,17 @@ import {
     AUTH_IS_CLOSE,
     AUTH_IS_OPEN,
     IS_LOGIN,
-    IS_REGISTER
+    IS_REGISTER,
+    UPDATE_USER_CREDENTIALS
 } from "./types";
 
 const initialState = {
     authModalIsOpen: false,
-    typeAuth: IS_LOGIN
+    typeAuth: IS_LOGIN,
+
+    isAutorized: false,
+    email: null,
+    userName: null
 }
 
 export default function UpdateAuthModal(state = initialState, action = {}) {
@@ -27,6 +32,10 @@ export default function UpdateAuthModal(state = initialState, action = {}) {
         case IS_REGISTER:
             {
                 return Object.assign({}, state, { typeAuth: action.typeAuth });
+            }
+        case UPDATE_USER_CREDENTIALS:
+            {
+                return Object.assign({}, state, { isAutorized: action.isAutorized, email: action.email, userName: action.userName });
             }
         default:
             {

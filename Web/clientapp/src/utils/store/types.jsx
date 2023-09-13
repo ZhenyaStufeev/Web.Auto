@@ -4,6 +4,7 @@ export const IS_LOGIN = "IS_LOGIN";
 export const IS_REGISTER = "IS_REGISTER";
 export const AUTH_IS_OPEN = "AUTH_IS_OPEN";
 export const AUTH_IS_CLOSE = "AUTH_IS_CLOSE";
+export const UPDATE_USER_CREDENTIALS = "UPDATE_USER_CREDENTIALS";
 
 //MENU
 export const MENU_IS_OPEN = "MENU_IS_OPEN";

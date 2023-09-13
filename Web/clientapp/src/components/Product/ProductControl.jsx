@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { getProducts, getFilters } from "../../utils/request";
+import { getProducts, getFilters, getCategory } from "../../utils/request";
 import { usePrevious } from "../../utils/help";
 import Filter from "./Filter";
 import ReactPaginate from "react-paginate";
@@ -50,6 +50,8 @@ const ProductControl = props => {
 
     const [priceTimer, setPriceTimer] = useState(null);
 
+    const [categoryName, setCategoryName] = useState("");
+
     useEffect(() => {
         let splited = window.location.pathname.split('/');
         let url_category_id = splited[2];
@@ -69,6 +71,10 @@ const ProductControl = props => {
             setNumberPage(0);
             requestProducts(true, true);
             requestFilters();
+            if(categoryName.length === 0)
+            {
+                requestCategory();
+            }
             productTop.current.scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -110,6 +116,13 @@ const ProductControl = props => {
 
 
     });
+
+    const requestCategory = () =>
+    {
+        getCategory(categoryId).then(result => {
+            setCategoryName(result.data.result[0]);
+        })
+    }
 
     const requestProducts = (ignorePrice = false, ignoreFilters = false) => {
         if (categoryId !== null) {
@@ -268,7 +281,7 @@ const ProductControl = props => {
     return (
         <div className="wrapper wrapper-catalog">
             <div className="catalog__title">
-                <h1 className="product-header">Назва категорії</h1>
+                <h1 className="product-header">{categoryName}</h1>
                 <div className="catalog__count">Знайдено {totalProducts} товарів</div>
             </div>
             <div ref={productTop} className="product-control">

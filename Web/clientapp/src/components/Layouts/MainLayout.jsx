@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { usePrevious } from "../../utils/help";
-
 import { Route, Routes } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import '../../assets/css/main.css';
@@ -10,6 +8,7 @@ import ProductPage from '../../pages/Product';
 import Menu from "../Menu";
 import Cart from "../Cart/Cart";
 import Footer from "../Footer";
+import ProductView from "../../pages/ProductView";
 
 
 const MainLayout = props => {
@@ -29,6 +28,7 @@ const MainLayout = props => {
             <Routes>
                 <Route path="/catalog/*" element={<ProductPage />}></Route>
                 <Route path="/" element={<MainPage />}></Route>
+                <Route path="/view*" element={<ProductView />}></Route>
             </Routes>
             <Footer />
         </div>

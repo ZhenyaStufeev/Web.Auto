@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { REGEXP_PASSWORD, REGEXP_EMAIL } from "../../utils/regexp";
+import { signUp } from "../../utils/request";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 const RegisterView = props => {
 
     const lookIconRef = useRef(null);
@@ -29,18 +31,36 @@ const RegisterView = props => {
 
     const onClickRegister = () => {
         //TO DO REQUEST
-        setErrors([]);
-        let errors = [];
+        // NotificationManager.success('Реєстрація аккаунта пройшла успішно. Тепер ви можете ввійти!', 'Успішна операція');
+        let _errors = [];
         if (!emailInput.match(REGEXP_EMAIL)) {
-            errors.push("E-пошта не відповідає стандартам");
+            _errors.push("E-пошта не відповідає стандартам");
         }
         if (passwordInput !== confirmPasswordInput) {
-            errors.push("Паролі не співпадають");
+            _errors.push("Паролі не співпадають");
         }
         if (!passwordInput.match(REGEXP_PASSWORD)) {
-            errors.push("Пароль повинен містити: тільки латиницю, не менше 1 літери алфавіту, хоча б 1 літеру верхнього регістру, не менше 1 цифрового символу, хоча б один спеціальний символ, більше 7 символів");
+            _errors.push("Пароль повинен містити: тільки латиницю, не менше 1 літери алфавіту, хоча б 1 літеру верхнього регістру, не менше 1 цифрового символу, хоча б один спеціальний символ, більше 7 символів");
         }
-        setErrors(errors);
+        if(_errors.length > 0)
+        {
+            setErrors(_errors);
+        }
+        else
+        {
+            signUp(emailInput, passwordInput, userNameInput)
+            .then(result => {
+                if(result.data.succeeded === true)
+                {
+                    NotificationManager.success('Реєстрація аккаунта пройшла успішно. Тепер ви можете ввійти!', 'Успішна операція');
+                    props.closeModal();
+                }
+            })
+            .catch(err => {
+                let server_errors = err.response.data.errors;
+                setErrors(server_errors);
+            });
+        }
     }
 
     const userNameInputOnChnaged = (e) => {

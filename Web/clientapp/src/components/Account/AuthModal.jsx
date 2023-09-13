@@ -7,7 +7,7 @@ import {
     IS_LOGIN,
     IS_REGISTER
 } from "../../utils/store/types";
-import { closeAuthModal, setLoginType, setRegisterType } from '../../utils/StoreMethods/AuthControl';
+import { closeAuthModal, setLoginType, setRegisterType, UpdateUserCredentials } from '../../utils/StoreMethods/AuthControl';
 
 
 const AuthModal = props => {
@@ -23,7 +23,14 @@ const AuthModal = props => {
             setAuthType(props.typeAuth);
     });
 
-    let authView = authType === IS_LOGIN ? <LoginView /> : <RegisterView />;
+    let authView = authType === IS_LOGIN ?
+        <LoginView
+            closeModal={props.closeAuthModal}
+            UpdateUserCredentials={props.UpdateUserCredentials}
+        /> :
+        <RegisterView
+            closeModal={props.closeAuthModal}
+        />;
     let login_class = "auth-tab" + (authType === IS_LOGIN ? " __active" : "");
     let register_class = "auth-tab" + (authType === IS_REGISTER ? " __active" : "");
 
@@ -76,5 +83,6 @@ const mapStateProps = state => {
 export default connect(mapStateProps, {
     closeAuthModal,
     setLoginType,
-    setRegisterType
+    setRegisterType,
+    UpdateUserCredentials
 })(AuthModal)

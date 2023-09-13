@@ -14,11 +14,30 @@ namespace Web.Controllers
     [Route("api/Account")]
     public class AccountController : ControllerBase
     {
-        IUserService UserService { get; set; }
+        IUserService userService { get; set; }
         public AccountController(IUserService us)
         {
-            UserService = us;
+            userService = us;
         }
 
+        [HttpPost("signin")]
+        public async Task<IActionResult> Login([FromBody] LoginModel login)
+        {
+            var res = await userService.SignIn(login);
+            if (res.Succeeded)
+                return Ok(res);
+            else
+                return StatusCode(401, res);
+        }
+
+        [HttpPost("signup")]
+        public async Task<IActionResult> register([FromBody] RegisterModel reg)
+        {
+            var res = await userService.SignUp(reg);
+            if (res.Succeeded)
+                return Ok(res);
+            else
+                return StatusCode(400, res);
+        }
     }
 }

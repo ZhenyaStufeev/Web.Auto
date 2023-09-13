@@ -24,9 +24,6 @@ const Cart = props => {
     }, [])
 
     useEffect(() => {
-
-        console.log();
-
         if (cartProductId === null && props.currentProductsId.length !== 0) {
             setCartProductId(props.currentProductsId);
         }
